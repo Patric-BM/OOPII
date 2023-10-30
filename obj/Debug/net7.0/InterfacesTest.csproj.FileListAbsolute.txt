@@ -1,0 +1,14 @@
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/bin/Debug/net7.0/InterfacesTest
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/bin/Debug/net7.0/InterfacesTest.deps.json
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/bin/Debug/net7.0/InterfacesTest.runtimeconfig.json
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/bin/Debug/net7.0/InterfacesTest.dll
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/bin/Debug/net7.0/InterfacesTest.pdb
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.GeneratedMSBuildEditorConfig.editorconfig
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.AssemblyInfoInputs.cache
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.AssemblyInfo.cs
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.csproj.CoreCompileInputs.cache
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.dll
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/refint/InterfacesTest.dll
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.pdb
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.genruntimeconfig.cache
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/ref/InterfacesTest.dll

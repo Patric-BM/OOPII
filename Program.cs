@@ -3,7 +3,8 @@ namespace InterfacesTest {
 
     class Program {
         static void Main(string[] args) {
-        
+
+            /// Esse programa imagina que estamos criando um aplicativo de lista de tarefas com interfaces. Porém, essa é uma impelemntação simpes, apenas para demonstrar o uso de interfaces.     
 
         ITarefa tarefa1 = new TarefaSimples("Comprar mantimentos");
         ITarefa tarefa2 = new TarefaImportante("Estudar para o exame", "Alta");

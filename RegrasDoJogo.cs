@@ -52,7 +52,7 @@ public class RegrasDoJogo : IRegrasDoJogo
 
     public bool JogoEncerrado => _tentativas >= 6 || _letras.All(c => c != '_');
 
-    public bool JogadorVenceu => _letras.All(c => c != '_');
+    public bool JogadorVenceu => _letras.All(c => c != '_') && _tentativas < 6;
 
     public string PalavraOculta => new string(_letras.ToArray());
 

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Nv314Nt/neQFRb69wHN0BWhBA/YPK8GPLaok/6/y2d4ycR2v7yjoZOjte1aGmF5x0d4U+ABRmnIlED4xFCkmJg==",
+  "dgSpecHash": "GyV6TvIKIIGJmwyKGCVYDHd9SlSxouBvMNUYTidJYmJKvN5uevnjjwylZUnCdoR93LxC317XnV5U5ouwmyHLog==",
   "success": true,
   "projectFilePath": "/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/InterfacesTest.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/patricborges/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

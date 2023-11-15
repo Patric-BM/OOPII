@@ -1,35 +1,63 @@
-﻿using System;
-namespace InterfacesTest {
+﻿
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
-    class Program {
-        static void Main(string[] args) {
-
-            /// Esse programa imagina que estamos criando um aplicativo de lista de tarefas com interfaces. Porém, essa é uma impelemntação simpes, apenas para demonstrar o uso de interfaces.     
-
-        ITarefa tarefa1 = new TarefaSimples("Comprar mantimentos");
-        ITarefa tarefa2 = new TarefaImportante("Estudar para o exame", "Alta");
-        ITarefa tarefa3 = new TarefaSimples("Fazer exercícios");
-
-        ListaDeTarefas listaDeTarefas = new ListaDeTarefas();
-
-        listaDeTarefas.AdicionarTarefa(tarefa1);
-        listaDeTarefas.AdicionarTarefa(tarefa2);
-        listaDeTarefas.AdicionarTarefa(tarefa3);        
+namespace InterfacesTest;
 
 
-        Console.WriteLine("Listando tarefas... \n");
-        listaDeTarefas.ListarTarefas();
+class Program
+{
+    static void Main(string[] args)
+    {
+        string txtFilePath = "palavras.txt"; 
+        IDatabaseConnection databaseConnection = new TextFileDatabaseConnection(txtFilePath);
+        IPalavraProvider palavraProvider = new PalavraProvider(databaseConnection);
+        IRegrasDoJogo regrasDoJogo = new RegrasDoJogo(palavraProvider.ObterPalavraAleatoria(out string categoria), categoria);
+        IJogoDaForca jogo = new JogoDaForca(palavraProvider, regrasDoJogo);
 
-        Console.WriteLine("Removendo tarefa 1... \n");
-        listaDeTarefas.RemoverTarefa(tarefa1);
+        int opcao;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1 - Iniciar Jogo");
+            Console.WriteLine("2 - Cadastrar Palavra");
+            Console.WriteLine("3 - Sair");
 
-        Console.WriteLine("Editando tarefa 2... \n");
-        listaDeTarefas.EditarTarefa(tarefa2, "Estudar para o exame final", true);
+            while (!int.TryParse(Console.ReadLine(), out opcao) || (opcao < 1 || opcao > 3))
+            {
+                Console.WriteLine("Opção inválida. Tente novamente.");
+            }
 
+            switch (opcao)
+            {
+                case 1:
+                    jogo.Iniciar();
+                    break;
+                case 2:
+                    CadastrarPalavra(databaseConnection);
+                    break;
+            }
+        } while (opcao != 3);
+    }
 
-        Console.WriteLine("Listando tarefas atualizadas... \n");
-        listaDeTarefas.ListarTarefas();
-        }
+    static void CadastrarPalavra(IDatabaseConnection databaseConnection)
+    {
+        Console.Clear();
+        Console.WriteLine("Digite a categoria da palavra:");
+        string categoria = Console.ReadLine();
 
+        Console.WriteLine("Digite a palavra:");
+        string palavra = Console.ReadLine();
+
+        ((TextFileDatabaseConnection)databaseConnection).CadastrarPalavra(categoria, palavra);
+
+        Console.WriteLine("Palavra cadastrada com sucesso!");
+        Console.WriteLine("Pressione qualquer tecla para continuar.");
+        Console.ReadKey();
     }
 }
+
+

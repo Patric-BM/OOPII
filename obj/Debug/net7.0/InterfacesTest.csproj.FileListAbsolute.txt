@@ -12,3 +12,6 @@
 /Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.pdb
 /Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.genruntimeconfig.cache
 /Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/ref/InterfacesTest.dll
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.csproj.AssemblyReference.cache
+/Users/patricborges/Documents/dev_projects/CSharp/InterfacesTest/InterfacesTest/obj/Debug/net7.0/InterfacesTest.csproj.CopyComplete

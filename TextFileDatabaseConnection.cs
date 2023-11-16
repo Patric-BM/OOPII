@@ -12,8 +12,9 @@ public class TextFileDatabaseConnection : TextDatabaseConnection
         var lines = data.SelectMany(entry =>
             entry.Value.Select(category =>
                 $"{entry.Key};{category.Key};{string.Join(",", category.Value)}"));
-
-        File.WriteAllLines(_filePath, lines);
+        
+        var linesLower = lines.Select(line => line.ToLowerInvariant()).ToList();
+        File.WriteAllLines(_filePath, linesLower);
     }
 
     public override Dictionary<int, Dictionary<string, List<string>>> Carregar()

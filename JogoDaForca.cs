@@ -15,47 +15,62 @@ public class JogoDaForca : IJogoDaForca
 
     public void Iniciar()
     {
-        while (!_regrasDoJogo.JogoEncerrado)
+        try
         {
-            Console.Clear();
-            Console.WriteLine(" -  Jogo da Forca - ");
-            Console.WriteLine();
-            Console.WriteLine($"Erros: {_regrasDoJogo.TentativasRestantes} de 6\n");
-            Console.WriteLine($"Tente adivinhar a palavra da Categoria: {_regrasDoJogo.Categoria}");
-            if (_regrasDoJogo.TentativasRestantes == 0)
+            while (!_regrasDoJogo.JogoEncerrado)
             {
-                ShowHangman();
-                Console.WriteLine("Você perdeu!");
-                Console.WriteLine($"A palavra era: {_regrasDoJogo.PalavraOculta}");
-                GameQuit();
-            }
-            else
-            {
-                ShowHangman();
-            }
+                Console.Clear();
+                Console.WriteLine(" -  Jogo da Forca - ");
+                Console.WriteLine();
+                Console.WriteLine($"Erros: {_regrasDoJogo.TentativasRestantes} de 6\n");
+                Console.WriteLine($"Tente adivinhar a palavra da Categoria: {_regrasDoJogo.Categoria}");
+    
+                if (_regrasDoJogo.TentativasRestantes == 1)
+                {
+                    Console.WriteLine("Você perdeu!");
+                    Console.WriteLine($"A palavra era: {_palavraProvider.ObterPalavraSelecionada()}");
+                    GameQuit();
+                }
+                else
+                {
+                    ShowHangman();
+                }
 
-            Console.WriteLine($"Letras erradas: {_regrasDoJogo.LetrasIncorretas}");
-            Console.WriteLine(_regrasDoJogo.PalavraOculta);
 
-            Console.WriteLine("Digite uma letra:");
-            char letra = GetValidLetter();
+                if (_regrasDoJogo.JogadorVenceu)
+                {
+                    Console.WriteLine("Você ganhou!");
+                    GameQuit();
+                }
 
-            if (!_regrasDoJogo.TentarLetra(letra))
-            {
-                Console.WriteLine("Erro: A letra já foi tentada.");
-                Console.WriteLine("Pressione qualquer tecla para continuar.");
-                Console.ReadKey();
+                Console.WriteLine($"Letras erradas: {_regrasDoJogo.LetrasIncorretas}");
+                Console.WriteLine(_regrasDoJogo.PalavraOculta);
+
+                Console.WriteLine("Digite uma letra:");
+                char letra = Validators.GetValidLetter();
+
+                if (!_regrasDoJogo.TentarLetra(letra))
+                {
+                    Console.WriteLine("Erro: A letra já foi tentada.");
+                    Console.WriteLine("Pressione qualquer tecla para continuar.");
+                    Console.ReadKey();
+                }
             }
         }
-
-        if (_regrasDoJogo.JogadorVenceu)
+        catch (IOException)
         {
-            Console.Clear();
-            Console.WriteLine("Você ganhou!");
-            Console.WriteLine($"A palavra era: {_regrasDoJogo.PalavraOculta}");
+            Console.WriteLine("Erro ao ler o arquivo!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Ocorreu um erro inesperado!");
+            Console.WriteLine(ex.Message);
+            Console.WriteLine("Pressione qualquer tecla para continuar.");
+            Console.ReadKey();
         }
 
-        GameQuit();
+
+
     }
 
     private void ShowHangman()
@@ -122,22 +137,7 @@ public class JogoDaForca : IJogoDaForca
         Console.WriteLine(hangmanDesign[6 - _regrasDoJogo.TentativasRestantes]);
     }
 
-    private char GetValidLetter()
-    {
-        char letra;
-        if (!char.TryParse(Console.ReadLine(), out letra))
-        {
-            throw new ArgumentException("Entrada inválida. Digite apenas uma letra.");
-        }
 
-        letra = char.ToLower(letra);
-        if (!char.IsLetter(letra))
-        {
-            throw new ArgumentException("Entrada inválida. Digite apenas uma letra.");
-        }
-
-        return letra;
-    }
 
     private void GameQuit()
     {

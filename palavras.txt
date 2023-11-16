@@ -3,6 +3,4 @@
 2;profissões;médico,advogado,engenheiro,professor,dentista,arquiteto
 3;esportes;futebol,vôlei,basquete,natação,tênis,handebol
 4;comidas;arroz,feijão,macarrão,batata,carne,frango
--1623769695;Softwares;Maya
--203055900;Big Tech;Google,Apple
--931458919;big tech;Microsoft
+533454955;software;google

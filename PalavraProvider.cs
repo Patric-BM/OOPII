@@ -5,6 +5,7 @@ public class PalavraProvider : IPalavraProvider
 {
     private readonly IDatabaseConnection _databaseConnection;
     private Dictionary<int, Dictionary<string, List<string>>> _wordsMap;
+    private string wordSelected{get; set;}
 
     public PalavraProvider(IDatabaseConnection databaseConnection)
     {
@@ -32,8 +33,16 @@ public class PalavraProvider : IPalavraProvider
         List<string> selectedWords = category.Values.First();
         int indexWord = random.Next(0, selectedWords.Count);
         categoria = category.Keys.First();
-        return selectedWords[indexWord];
+        var wordChoice = selectedWords[indexWord];
+        wordSelected = wordChoice;
+        return wordChoice;
     }
+
+    public string ObterPalavraSelecionada()
+    {
+        return wordSelected;
+    }
+
 
     public void CadastrarPalavra(string categoria, string palavra)
     {

@@ -18,29 +18,47 @@ class Program
         IJogoDaForca jogo = new JogoDaForca(palavraProvider, regrasDoJogo);
 
         int opcao;
-        do
-        {
-            Console.Clear();
-            Console.WriteLine("Menu:");
-            Console.WriteLine("1 - Iniciar Jogo");
-            Console.WriteLine("2 - Cadastrar Palavra");
-            Console.WriteLine("3 - Sair");
-
-            while (!int.TryParse(Console.ReadLine(), out opcao) || (opcao < 1 || opcao > 3))
+        
+        
+           while (true)
             {
-                Console.WriteLine("Opção inválida. Tente novamente.");
-            }
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Jogo da Forca");
+                    Console.WriteLine("1 - Jogar");
+                    Console.WriteLine("2 - Cadastrar palavra");
+                    Console.WriteLine("3 - Sair");
+                    Console.Write("Digite uma opção: ");
+                    opcao = int.Parse(Console.ReadLine());
 
-            switch (opcao)
-            {
-                case 1:
-                    jogo.Iniciar();
-                    break;
-                case 2:
-                    CadastrarPalavra(databaseConnection);
-                    break;
+                    switch (opcao)
+                    {
+                        case 1:
+                            jogo.Iniciar();
+                            break;
+                        case 2:
+                            CadastrarPalavra(databaseConnection);
+                            break;
+                        case 3:
+                            return;
+                        default:
+                            Console.WriteLine("Opção inválida!");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Opção inválida!");
+                }
+                
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
             }
-        } while (opcao != 3);
+        }
+
+          
     }
 
     static void CadastrarPalavra(IDatabaseConnection databaseConnection)

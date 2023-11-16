@@ -6,6 +6,7 @@ public interface IRegrasDoJogo
     int TentativasRestantes { get; }
     bool JogoEncerrado { get; }
     bool JogadorVenceu { get; }
+
     string PalavraOculta { get; }
     string LetrasIncorretas { get; }
     string Categoria { get; } 

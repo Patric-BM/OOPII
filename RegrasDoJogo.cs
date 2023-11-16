@@ -24,24 +24,24 @@ public class RegrasDoJogo : IRegrasDoJogo
 
     public bool TentarLetra(char letra)
     {
-        if (_tentativas >= 6)
+        if (_letras.Contains(letra))
         {
             return false;
         }
 
-        bool acertou = false;
-        for (int i = 0; i < _palavra.Length; i++)
+        if (_palavra.Contains(letra))
         {
-            if (_palavra[i] == letra)
+            for (int i = 0; i < _palavra.Length; i++)
             {
-                _letras[i] = letra;
-                acertou = true;
+                if (_palavra[i] == letra)
+                {
+                    _letras[i] = letra;
+                }
             }
         }
-
-        if (!acertou)
+        else
         {
-            _letrasIncorretas += letra + " ";
+            _letrasIncorretas += letra;
             _tentativas++;
         }
 
@@ -50,9 +50,9 @@ public class RegrasDoJogo : IRegrasDoJogo
 
     public int TentativasRestantes => 6 - _tentativas;
 
-    public bool JogoEncerrado => _tentativas >= 6 || _letras.All(c => c != '_');
+    public bool JogoEncerrado => _letras.Contains('_') && _tentativas >= 6;
 
-    public bool JogadorVenceu => _letras.All(c => c != '_') && _tentativas < 6;
+    public bool JogadorVenceu => !_letras.Contains('_');
 
     public string PalavraOculta => new string(_letras.ToArray());
 
